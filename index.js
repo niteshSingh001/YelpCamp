@@ -17,6 +17,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const MongoStore=require('connect-mongo');
+const mongoSanitize=require('express-mongo-sanitize');
 
 
 const userRoutes = require("./routes/users.js");
@@ -43,6 +44,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOVerride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(mongoSanitize());
 
 const secret=process.env.SECRET || 'thisshouldbeabettersecret!' ;
 
@@ -83,7 +85,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-  console.log(req.query);
   res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -97,6 +98,7 @@ app.use((req, res, next) => {
 // })
 
 const validateReview = (req, res, next) => {
+  console.log(req.query);
   const { error } = reviewSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
