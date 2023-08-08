@@ -48,9 +48,6 @@
                         </form>
                     </div>
                     <% } %>
-                        <div class="card-footer text-muted">
-                            <%- new Date() %>
-                        </div>
             </div>
 
         </div>
@@ -117,6 +114,6 @@
 
     <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-        const campground = <%- JSON.stringify(campground) %>
+        const campground = <% - JSON.stringify(campground) %>
     </script>
     <script src="/javascripts/showPageMap.js"></script>
