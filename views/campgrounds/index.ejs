@@ -1,4 +1,4 @@
-<% layout('layouts/boilerplate') %>
+﻿<% layout('layouts/boilerplate') %>
     <div id="cluster-map"></div>
     <h1>All Campgrounds</h1>
     <div>
@@ -10,15 +10,14 @@
             <div class="row">
                 <div class="col-md-4">
                     <% if(campground.images.length) { %>
-                        <img crossorigin="anonymous" src="<%= campground.images[0].url %>" alt="" class="img-fluid"
-                            style=" width: 100%;max-height: 200px;">
+                        <img crossorigin="anonymous" src="<%= campground.images[0].url %>" alt="" class="img-fluid">
                         <% } else {%>
                             <img crossorigin="anonymous"
                                 src="https://images.unsplash.com/photo-1441239372925-ac0b51c4c250?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG5hdHVyYWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                                alt="" class="img-fluid" style=" width: 100%;max-height: 200px;">
+                                alt="" class="img-fluid">
                             <% } %>
                 </div>
-                <div class="col-md-8 p-3">
+                <div class="col-md-8">
                     <h5 class="card-title">
                         <%= campground.title %>
                     </h5>
@@ -30,7 +29,8 @@
                             <%= campground.location%>
                         </samll>
                     </p>
-                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title %>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary mb-2">View <%= campground.title
+                            %>
                     </a>
                 </div>
             </div>
